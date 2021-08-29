@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<body>
+<header>
+  <h1>Image Showcase</h1>
+</header>
+<img id="pics" src="" alt="Forms" width="20%" height="20%"></img>
+<button id="bnext" type="button">Next</input>
+  <button id="bprev" type="button">Previous</input>
+
+<script>
+ //seed56963
+ //seed44118
+ //seed19445
+ //seed96867
+ //seed65701
+ //seed55991
+ //seed05868
+ //seed26696
+ //seed48423
+ //seed90229
+ //seed89589
+ //seed72806
+ //seed13985
+ //"seed89589"
+ /*"seed26696"
+"seed48423"
+"seed90229"
+"seed19445"
+*/
+(function(){
+var temp = 150;   
+ var seedlist = ["seed74963","seed53844","seed91137","seed13985","seed56963","seed44118","seed96867","seed05915","seed65701","seed55991","seed05868","seed20577","seed72806"];
+ var seed = 0;
+ var images = ["https://thisanimedoesnotexist.ai/results/psi-0.3/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.4/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.5/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.6/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.7/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.8/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.9/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.0/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.1/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.2/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.3/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.4/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.5/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.6/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.7/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.8/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.9/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-2.0/"+seedlist[seed]+".png"];
+ var currentseed = seedlist.indexOf(seed);
+ var index = 0;
+ function prevImage() {
+  index--;
+  index = index < 0 ? 0 : index;
+  return images[index];
+ }
+
+function nextPic(){
+  index++;
+   if(index >= images.length)
+  {
+    temp = 2000;
+   index = 0;
+   //currentseed ++;
+   console.log(currentseed);
+   //seed = seedlist[currentseed];
+   updateImage();
+   return images[index];
+  }
+  return images[index];
+ }
+//var seconds = <?php echo $user->getBlockExpiryRemaining(); ?>;
+function updateImage()
+ {
+  seedlist.push(seedlist.splice(index, 1)[0]);
+  console.log(seedlist[seed]);
+  images = ["https://thisanimedoesnotexist.ai/results/psi-0.3/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.4/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.5/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.6/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.7/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.8/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-0.9/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.0/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.1/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.2/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.3/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.4/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.5/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.6/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.7/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.8/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-1.9/"+seedlist[seed]+".png","https://thisanimedoesnotexist.ai/results/psi-2.0/"+seedlist[seed]+".png"];
+ } 
+var state = 0;
+var timer;
+function nextImage()
+{
+//document.querySelector("#pics").src = nextPic();  
+ //state++;
+  //console.log(state);
+  
+document.querySelector("#pics").src = nextPic();
+ if (state == 100)
+{
+  temp = 10000; 
+  state = 0;
+}
+timer = setTimeout(function() {
+     nextImage();
+},temp);
+console.log(state);
+state ++;
+if (temp != 100)
+  {
+    temp = 150;
+    state = 0;
+  }
+  
+}
+document.querySelector("#bprev").onclick= function() {
+  document.querySelector("#pics").src = prevImage();
+  clearTimeout((timer));
+ }
+ document.querySelector("#bnext").onclick= function() {
+   //document.querySelector("#pics").src = nextPic();
+  nextImage();
+   /*
+   var repeat;
+  for(var i = 0; i >= 1; i++)
+     {
+       nextPic();
+						//repeat = setTimeout(nextPic(),1000);
+						//clearTimeout(repeat);
+     }
+   */
+ }
+
+
+})();
+</script>
+</body>
+</html>
